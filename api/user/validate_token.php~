@@ -1,0 +1,34 @@
+<?php
+	include_once '../config/core.php';
+	include_once '../libs/php-jwt-master/src/BeforeValidException.php';
+	include_once '../libs/php-jwt-master/src/ExpiredException.php';
+	include_once '../libs/php-jwt-master/src/SignatureInvalidException.php';
+	include_once '../libs/php-jwt-master/src/JWT.php';
+	use \Firebase\JWT\JWT;
+	
+	class Validate
+	{
+		public $jwt;
+		function valid()
+		{
+			$this->jwt="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1NzUwMDY3MDUsImV4cCI6MTU3NTAwODUwNSwiZGF0YSI6eyJ1aWQiOiIzIiwibmFtZSI6bnVsbCwiZW1haWwiOiJhQGEuY29tIn19.TWHilmuymdfhBXrGU_VUrHb83e3saPwFcRQufdziV9E";
+			if($this->jwt)
+			{
+				try
+				{
+					echo "hiii";
+					$decode=JWT::decode($this->jwt,$key);
+					echo $decode;
+					return ($decode);
+				}
+				catch(Exception $e)
+				{
+					return ("error");
+				}
+			}
+		}
+	}
+	$a=new Validate();
+	$b=$a->valid();
+	echo $b;
+?>

@@ -1,0 +1,33 @@
+
+.right
+{
+  background-image:linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url(../..//Resources/m5.jpg);
+  background-position:top center; 
+    background-repeat:no-repeat; 
+    background-size:cover;
+   
+}
+.left
+{
+    background-color: rgb(243, 243, 243);
+}
+ul 
+{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+li a {
+  display: block;
+  color: black;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover */
+li a:hover {
+  cursor: pointer;
+  background-color: rgb(129, 129, 129);
+}

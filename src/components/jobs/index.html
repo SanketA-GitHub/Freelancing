@@ -1,0 +1,19 @@
+<link href="./src/components/jobs/jobs.css" type="text/css" rel="stylesheet">
+<div style="padding: 2%;display: flex;text-align: right">
+    
+    <div style="display: none;" id="sel1">
+        
+            Filter :  <select id="sel"  onchange="list()">
+            <option value="all">All</option>
+            <option value="open">Open</option>
+            <option value="progress">Progress</option>
+        </select>
+    </div>
+    <div style="display: flex;margin-left: 1%" id="sel2">
+        <input id="search" style="height: 100%;">
+        <button onclick="search()" class="btn btn-outline-primary" style="padding: 1%">Search</button>
+    </div>
+</div>
+<div id="activejobs" style="overflow: auto">
+
+</div>

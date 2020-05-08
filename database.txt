@@ -1,0 +1,126 @@
+freelancer=# \d
+              List of relations
+ Schema |     Name      |   Type   |  Owner   
+--------+---------------+----------+----------
+ public | bid           | table    | himanshu
+ public | chat          | table    | himanshu
+ public | jobs          | table    | himanshu
+ public | jobs_jid_seq  | sequence | himanshu
+ public | rating        | table    | himanshu
+ public | role          | table    | postgres
+ public | user_in_role  | table    | himanshu
+ public | users         | table    | himanshu
+ public | users_uid_seq | sequence | himanshu
+(9 rows)
+
+
+
+freelancer=# \d bid
+      Table "public.bid"
+ Column |  Type   | Modifiers 
+--------+---------+-----------
+ jid    | integer | 
+ fid    | integer | 
+ amount | integer | not null
+Foreign-key constraints:
+    "bid_fid_fkey" FOREIGN KEY (fid) REFERENCES users(uid)
+    "bid_jid_fkey" FOREIGN KEY (jid) REFERENCES jobs(jid)
+
+
+
+      Table "public.chat"
+ Column  |  Type   | Modifiers 
+---------+---------+-----------
+ id1     | integer | 
+ id2     | integer | 
+ jid     | integer | 
+ message | text    | not null
+Foreign-key constraints:
+    "chat_id1_fkey" FOREIGN KEY (id1) REFERENCES users(uid)
+    "chat_id2_fkey" FOREIGN KEY (id2) REFERENCES users(uid)
+    "chat_jid_fkey" FOREIGN KEY (jid) REFERENCES jobs(jid)
+
+
+
+freelancer=# \d jobs;
+                            Table "public.jobs"
+   Column    |  Type   |                     Modifiers                      
+-------------+---------+----------------------------------------------------
+ jid         | integer | not null default nextval('jobs_jid_seq'::regclass)
+ cid         | integer | not null
+ fid         | integer | 
+ title       | text    | not null
+ description | text    | not null
+ budget      | integer | not null
+ status      | text    | 
+ datetime    | date    | not null
+ category    | text    | not null
+Indexes:
+    "jobs_pkey" PRIMARY KEY, btree (jid)
+Check constraints:
+    "jobs_status_check" CHECK (status = ANY (ARRAY['open'::text, 'closed'::text, 'progress'::text, 'complete'::text]))
+Foreign-key constraints:
+    "jobs_cid_fkey" FOREIGN KEY (cid) REFERENCES users(uid)
+    "jobs_fid_fkey" FOREIGN KEY (fid) REFERENCES users(uid)
+Referenced by:
+    TABLE "bid" CONSTRAINT "bid_jid_fkey" FOREIGN KEY (jid) REFERENCES jobs(jid)
+    TABLE "chat" CONSTRAINT "chat_jid_fkey" FOREIGN KEY (jid) REFERENCES jobs(jid)
+
+
+
+freelancer=# \d rating ;
+    Table "public.rating"
+ Column |  Type   | Modifiers 
+--------+---------+-----------
+ uid    | integer | 
+ rating | integer | 
+Foreign-key constraints:
+    "rating_uid_fkey" FOREIGN KEY (uid) REFERENCES users(uid)
+
+
+
+        Table "public.role"
+ Column |     Type      | Modifiers 
+--------+---------------+-----------
+ rid    | integer       | not null
+ rname  | character(20) | not null
+Indexes:
+    "role_pkey" PRIMARY KEY, btree (rid)
+Referenced by:
+    TABLE "user_in_role" CONSTRAINT "user_in_role_rid_fkey" FOREIGN KEY (rid) REFERENCES role(rid) ON UPDATE CASCADE ON DELETE CASCADE
+
+
+
+freelancer=# \d user_in_role;
+ Table "public.user_in_role"
+ Column |  Type   | Modifiers 
+--------+---------+-----------
+ uid    | integer | 
+ rid    | integer | not null
+Foreign-key constraints:
+    "user_in_role_rid_fkey" FOREIGN KEY (rid) REFERENCES role(rid) ON UPDATE CASCADE ON DELETE CASCADE
+    "user_in_role_uid_fkey" FOREIGN KEY (uid) REFERENCES users(uid) ON UPDATE CASCADE ON DELETE CASCADE
+
+
+
+                                  Table "public.users"
+  Column  |          Type          |                      Modifiers                      
+----------+------------------------+-----------------------------------------------------
+ uid      | integer                | not null default nextval('users_uid_seq'::regclass)
+ uname    | character(50)          | not null
+ email    | character varying(50)  | not null
+ password | character varying(200) | not null
+ location | character varying(100) | not null
+Indexes:
+    "users_pkey" PRIMARY KEY, btree (uid)
+    "users_email_key" UNIQUE CONSTRAINT, btree (email)
+Referenced by:
+    TABLE "bid" CONSTRAINT "bid_fid_fkey" FOREIGN KEY (fid) REFERENCES users(uid)
+    TABLE "chat" CONSTRAINT "chat_id1_fkey" FOREIGN KEY (id1) REFERENCES users(uid)
+    TABLE "chat" CONSTRAINT "chat_id2_fkey" FOREIGN KEY (id2) REFERENCES users(uid)
+    TABLE "jobs" CONSTRAINT "jobs_cid_fkey" FOREIGN KEY (cid) REFERENCES users(uid)
+    TABLE "jobs" CONSTRAINT "jobs_fid_fkey" FOREIGN KEY (fid) REFERENCES users(uid)
+    TABLE "rating" CONSTRAINT "rating_uid_fkey" FOREIGN KEY (uid) REFERENCES users(uid)
+    TABLE "user_in_role" CONSTRAINT "user_in_role_uid_fkey" FOREIGN KEY (uid) REFERENCES users(uid) ON UPDATE CASCADE ON DELETE CASCADE
+
+

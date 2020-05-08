@@ -1,0 +1,23 @@
+<link href="./src/components/viewjob/viewjob.css" type="text/css" rel="stylesheet">
+<div>
+    <div id="title" class="title"></div>
+    <div id="category" class="category"></div>
+    <div id="date" class="date"></div>
+    <div id="status" class="status"></div>
+    <div id="budget" class="budget"></div>
+    <div id="description" class="description"></div>
+    <div id="bid"></div>
+    <div style="display: flex">
+            <button class="btn btn-outline-primary" id="issue" style="display: none" onclick='Load("#raiseissue",1,"right")'>Raise Issue</button>
+            <button class="btn btn-outline-primary" id="comp" style="display: none" onclick="complete()">Complete job</button>
+            <button class="btn btn-outline-primary" id="del" style="display: none" onclick="del()">Delete job</button>
+            </div>
+    <div id="chat2" style="margin: 2%;border:1px solid;padding: 1%;background-color: rgb(243, 243, 243)">
+        
+        <div id="chat1" style="padding: 1%;width: 100%;height: 30vh;overflow: auto"></div>
+        <div style="display: flex;padding: 1%;border-top: 1px solid">
+            <textarea rows=4 cols="30" id="chatmsg"></textarea>
+            <button class="btn btn-outline-primary" onclick="sendmsg()">Send</button>
+        </div>
+    </div>
+</div>

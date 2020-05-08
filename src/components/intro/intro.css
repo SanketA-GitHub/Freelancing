@@ -1,0 +1,43 @@
+*
+{
+    margin: 0%;
+    padding: 0%;
+}
+.bg
+{
+    background-position:top center; 
+    background-repeat:no-repeat; 
+    background-size:cover;
+    background-image:url('../../Resources/mac.jpg');
+    min-height: 100vh;
+}
+.m
+{
+    background-color: white;
+}
+.row1
+{
+    min-height: 10vh;
+    
+}
+.ip
+{
+    font-size: 60px;
+    padding-left: 4%;
+    padding-top: 13%;
+    color: white;
+}
+
+.hbutton
+{
+    font-size: 200%;
+    margin-left: 1%;
+    margin-top: 1%;
+    padding: 12px 24px;
+    background: rgba(255, 255, 255, 0.836);
+    border: none;
+    border-radius: 12%;
+}
+.hbutton:hover {
+    background-color: white;
+  }

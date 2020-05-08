@@ -1,0 +1,25 @@
+<link href="./src/components/client/client.css" type="text/css" rel="stylesheet">
+<div class="client" style="display: flex;min-height: 80vh;border-top: 1px solid">
+    <div class="left" id="left" style="border-right: 1px solid black;min-width: 20%;border-radius: 1%">
+        <ul>
+            <li>
+                <a onclick="Load('#postjob',1,'right')">Post Jobs</a>
+            </li>
+            <li>
+                <a onclick="stat='active';Load('#jobs',1,'right');">Active Jobs</a>
+            </li>
+            <li>
+                <a onclick="stat='complete';Load('#jobs',1,'right');">Completed Jobs</a>
+            </li>
+            <li>
+                <a onclick="Load('#searchfreelancer',1,'right');">Search Freelancers</a>
+            </li>
+            <li>
+                <a onclick="Load('#feedback',1,'right');">Feedback</a>
+            </li>
+        </ul>
+    </div>
+    <div class="right" id="right" style="min-width: 79.8%;border-radius: 1%">
+        <button class="btn btn-outline-primary" style="margin-top: 20%;margin-left: 40%" onclick="Load('#postjob',1,'right')">Post new Job</button>
+    </div>
+</div>

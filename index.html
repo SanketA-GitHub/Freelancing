@@ -1,0 +1,173 @@
+<html>
+<head>
+		<link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css">
+		<link href="./fontawesome/css/all.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="./index.css">
+<meta charset="UTF-8">
+	<script>
+		window.addEventListener('hashchange', OnHashChange);
+		window.addEventListener('load', OnHashChange);
+		var id='main';
+		var id1='row1';
+		var path="#header";
+		let result;
+		let jid;
+		let t;
+		let stat;
+		let loggedin=false;
+		function changeid(cid)
+		{
+			id=cid;
+		}
+		function changepath(cp)
+		{
+			path=cp;
+		}
+		function changeid1(cid1)
+		{
+			id1=cid1;
+		}
+		function cc()
+		{
+			var re=null;
+			var name = "freelancing" + "=";
+			var decodedCookie = decodeURIComponent(document.cookie);
+			var ca = decodedCookie.split(';');
+			for(var i = 0; i < ca.length; i++) 
+			{
+				var c = ca[i];
+				while (c.charAt(0) == ' ') {
+				c = c.substring(1);
+				}
+				if (c.indexOf(name) == 0) {
+				re=c.substring(name.length, c.length);
+				}
+			}
+			if(re!=null)
+			{
+				var rea=re.split(',');
+				result=JSON.parse('{"name":"'+rea[0]+'","uid":"'+rea[1]+'","type":"'+rea[2]+'"}');
+				loggedin=true;
+				//console.log(result);
+				clean();
+				if(result['type']==1)
+                location.hash="/client";
+              if(result['type']==2)
+                location.hash="/freelancer"
+              if(result['type']==3)
+                location.hash="/admin"
+			}
+			else
+			{
+				//alert(location.hash)
+				if(!location.hash.match('/signup'))
+				location.hash="/intro";
+			}
+		}
+		function OnHashChange ()
+		{
+			cc();
+			if(document.location.hash)
+			{
+				req=new XMLHttpRequest();
+				let url=document.location.hash;
+				url=url.replace("#","./src/components");
+				url+="/index.html";
+				req.open("GET",url);
+				req.send();
+				req.onload = function()
+				{
+					if (req.status != 200&&req.status != 0) 
+					{ 
+						alert(`Error 1 ${req.status}: ${req.statusText} ${url}`);
+					} 
+					else 
+					{
+						document.getElementById(id).innerHTML=req.response;
+						inn=document.getElementById('main');
+						if(document.getElementById('row1')==null)
+						{
+							id1="header";
+						}
+						else
+							id1="row1";
+						var scriptNode = document.createElement('script');
+						scriptNode.innerHTML = "Load(path,1)";
+						inn.appendChild(scriptNode);
+						let url2=location.hash;
+						url2=url2.replace("#/","./src/components/");
+						url2+="/script.js";
+						var inn=document.getElementById("main");
+						var scriptNode = document.createElement('script');
+						scriptNode.setAttribute('src',url2);
+						if(scriptNode)
+						inn.appendChild(scriptNode);
+  					}
+				};
+			}
+		}
+		function clean()
+		{
+			document.getElementById('header').innerHTML="";
+		}
+		function lscript(url)
+		{
+			url=url.replace("#","./src/components/");
+			url+="/script.js";
+			var inn=document.getElementById("main");
+			var scriptNode = document.createElement('script');
+			scriptNode.setAttribute('src',url);
+			inn.appendChild(scriptNode);
+		}
+		function Load(url1,sc=0,id2=id1)
+		{
+			let url=url1;
+			req1=new XMLHttpRequest();
+			url1=url1.replace("#","./src/components/");
+			url1+="/index.html";
+			req1.open("GET",url1);
+			req1.send();
+			req1.onload = function()
+			{
+				if ((req1.status != 200)&&(req1.status!=0)) 
+				{ 
+					alert(`Error 2 ${req1.status}: ${req1.statusText} ${url1}`);
+				} 
+				else 
+				{
+					document.getElementById(id2).innerHTML=req1.response;
+				}
+			};
+			if(sc==1)
+			{
+				url=url.replace("#","./src/components/");
+				url+="/script.js";
+				var inn=document.getElementById(id2);
+				var scriptNode = document.createElement('script');
+				scriptNode.setAttribute('src',url);
+				inn.appendChild(scriptNode);
+			}
+		}
+		function chk(idd,pattern="^[A-Za-z]+$")
+		{
+			let ele=document.getElementById(idd).value;
+			document.getElementById(idd).style.border="";
+			
+			if(!ele.match(pattern))
+			{
+				document.getElementById(idd).style.border="1px solid red";
+				return false;
+			}
+			//alert(ele)
+			return true;
+		}
+	</script>
+	<title>FREELANCING</title>
+</head>
+<body onload="if(!location.hash){location.hash='/intro'};" id='root'>
+	<div id="header"></div>
+	<div id="main" class="main">
+	</div>
+	<div id="footer" style="min-height: 10vh;background-color:black;width: 100%">Freelancing</div>
+</body>
+</html>

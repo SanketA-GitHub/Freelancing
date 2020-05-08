@@ -1,0 +1,44 @@
+<link href="./src/components/header/header.css" type="text/css" rel="stylesheet">
+<div style="border-bottom: 1px solid grey" class="m ">
+        <ul>
+               <img onclick="location.hash='/intro';clean();" height=70px width=160px src="./src/Resources/logot.png">
+                <li id="link" class="fr"><a onclick="location.hash='/signup';">Signup</a></li>
+                <li id="link1" class="fr"><a onclick="login1();">Login</a></li>
+                <li class="fr">
+                    <div id="dropdown" class="dropdown">
+                        <span id="uname" class="dropbtn"></span>
+                        <div class="dropdown-content">
+                          <a onclick="logout()">Logout</a>
+                      </div>
+                    </div>
+                </li>
+        </ul> 
+</div>
+
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3>Login</h3>
+          <span class="close" id="close" style="float: right" onclick="close1()">&times;</span>
+          
+        </div>
+        <div class="modal-body">
+            <form name="login" style="padding: 5%">
+              <table>
+                <tr>
+                  <td>Email :</td>
+                  <td><input type="text" id="usrname"></td>
+                </tr>
+                <tr>
+                <td>Password :</td>
+                <td><input type="password" id="pass"></td>
+              </tr>
+              </table>
+            </form>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-outline-primary" onclick="close1()">Close</button>
+          <button class="btn btn-outline-primary" onclick="login2()">Login</button>
+        </div>
+      </div>  
+  </div>

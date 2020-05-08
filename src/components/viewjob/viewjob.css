@@ -1,0 +1,57 @@
+.title
+{
+    padding: 1%;
+    border-bottom: 1px solid;
+    font-weight: bolder;
+}
+.chat1
+{
+    height: 30%;
+    overflow: auto;
+}
+.date
+{
+    padding: 1%;
+}
+.status
+{
+    padding: 1%;
+}
+.budget
+{
+    padding: 1%;
+    border-bottom: 1px solid;
+}
+.description
+{
+    padding: 1%;
+    border-bottom: 1px solid;
+}
+.category
+{
+    padding: 1%;
+}
+.bid
+{
+    padding: 1%;
+}
+.msg
+{
+    display: block;
+    margin: 1%;
+    padding: 1%;
+    background-color:white; 
+    border: 1px solid;
+}
+.list
+{
+    display: block;
+    margin: 1%;
+    background-color:white; 
+    border: 1px solid;
+    cursor: pointer;
+}
+.list:hover
+{
+    background-color: rgb(162, 166, 170);
+}

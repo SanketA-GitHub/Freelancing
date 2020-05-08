@@ -1,0 +1,26 @@
+.fl
+{
+  float : left;
+}
+.fr
+{
+  float : right;
+}
+*
+{
+  margin: 0;
+}
+.checked {
+  color: orange;
+}
+.c
+{
+  background: #8dffa0;
+}
+.main
+{
+  background-image:linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(./src/Resources/m3.jpg);
+  background-position:top center; 
+    background-repeat:no-repeat; 
+    background-size:cover;
+}

@@ -1,0 +1,22 @@
+<link href="./src/components/freelancer/freelancer.css" type="text/css" rel="stylesheet">
+<div class="freelancer" style="display: flex;min-height: 80vh;border-top: 1px solid">
+    <div class="left" id="left" style="border-right: 1px solid black;min-width: 20%;border-radius: 1%">
+        <ul>
+            <li>
+                <a onclick="stat='active';Load('#jobs',1,'right');">Active Jobs</a>
+            </li>
+            <li>
+                <a onclick="stat='complete';Load('#jobs',1,'right');">Completed Jobs</a>
+            </li>
+            <li>
+                <a onclick="stat='all';Load('#jobs',1,'right');">Search Jobs</a>
+            </li>
+            <li>
+                <a onclick="Load('#feedback',1,'right');">Feedback</a>
+            </li>
+        </ul>
+    </div>
+    <div class="right" id="right" style="min-width: 79.8%;border-radius: 1%">
+        <button class="btn btn-outline-dark" style="margin-top: 20%;margin-left: 40%" onclick="stat='all';Load('#jobs',1,'right');">Search new Job</button>
+    </div>
+</div>

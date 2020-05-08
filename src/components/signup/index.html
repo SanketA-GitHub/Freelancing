@@ -1,0 +1,20 @@
+<link href="./src/components/signup/signup.css" type="text/css" rel="stylesheet">
+<div class="signup">
+    <form name="signup">
+    <table cellspacing=10% cellpadding=10% id="table" style="color: white">
+        <tr>
+            <td><span>Name/Company Name : </span><br><input id="name"></td>
+            <td><span>Email : </span><br><input id="email"></td>
+            <td><span>Location : </span><br><input id="location"></td>
+        </tr>
+        <tr>
+            <td><span>Password : </span><br><input type="password" id="password"></td>
+            <td><span>Confirm password : </span><br><input type="password" id="cpassword"></td>
+            <td><span>I want to : </span><br><select id="type"><option value="2" selected>Work</option><option value="1">Hire</option></select></td>
+        </tr>
+        <tr>
+            <td><input type="button" class="btn btn-outline-light" value="Register" onclick="signup1()"></td>
+        </tr>
+    </table>
+    </form>
+</div>
